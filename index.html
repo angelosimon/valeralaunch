@@ -777,22 +777,13 @@
     </footer>
   </div>
 
-  <script>
-    const downloadBtn = document.getElementById('downloadBtn');
+<script>
+const downloadBtn = document.getElementById('downloadBtn');
 
-    downloadBtn.addEventListener('click', function () {
-      const isMac =
-        /Mac|iPhone|iPad|iPod/.test(navigator.platform) ||
-        /Mac OS/.test(navigator.userAgent);
-
-      if (!isMac) {
-        alert('Этот лаунчер доступен только для macOS.');
-        return;
-      }
-
-      window.location.href =
-        'https://github.com/angelosimon/valeralaunch/releases/download/launcher/valeralaucnher.dmg';
-    });
-  </script>
+downloadBtn.addEventListener('click', function () {
+  window.location.href =
+    "https://github.com/angelosimon/valeralaunch/releases/download/launcher/valeralaucnher.dmg";
+});
+</script>
 </body>
 </html>
