@@ -18,16 +18,15 @@
 
     :root{
       --bg:#070b14;
-      --bg-2:#05070d;
-      --panel:rgba(14,18,28,.70);
-      --panel-strong:rgba(14,18,28,.82);
-      --panel-2:#0e131b;
-      --panel-3:#10151e;
-      --panel-border:rgba(255,255,255,.06);
-      --panel-border-2:rgba(255,255,255,.09);
+      --bg2:#05070d;
+      --panel:rgba(14,18,28,.72);
+      --panel-2:#0f141b;
+      --panel-3:#111720;
+      --border:rgba(255,255,255,.06);
+      --border-2:rgba(255,255,255,.09);
       --text:#f5f7ff;
       --muted:rgba(255,255,255,.72);
-      --muted2:rgba(255,255,255,.5);
+      --muted2:rgba(255,255,255,.46);
       --blue:#6f8cff;
       --blue2:#86a0ff;
       --shadow:0 20px 80px rgba(0,0,0,.38);
@@ -62,8 +61,8 @@
     .page{
       position:relative;
       min-height:100vh;
-      background:var(--bg);
       overflow:hidden;
+      background:var(--bg);
     }
 
     .hero-bg{
@@ -71,11 +70,11 @@
       inset:0;
       height:100vh;
       background:
-        linear-gradient(180deg, rgba(8,11,20,.18) 0%, rgba(8,11,20,.60) 100%),
+        linear-gradient(180deg, rgba(8,11,20,.20) 0%, rgba(8,11,20,.62) 100%),
         radial-gradient(circle at center, rgba(8,11,20,.08) 0%, rgba(8,11,20,.28) 58%, rgba(8,11,20,.72) 100%),
         url("https://i.ibb.co/BJqNWfJ/image.png") center center / cover no-repeat;
       transform:scale(1.03);
-      animation:bgFloat 16s ease-in-out infinite alternate;
+      animation:bgFloat 18s ease-in-out infinite alternate;
       z-index:0;
       will-change:transform;
     }
@@ -85,7 +84,7 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(7,11,20,.78) 0%, rgba(7,11,20,.46) 36%, rgba(7,11,20,.22) 56%, rgba(7,11,20,.50) 100%);
+        linear-gradient(90deg, rgba(7,11,20,.82) 0%, rgba(7,11,20,.48) 35%, rgba(7,11,20,.18) 56%, rgba(7,11,20,.54) 100%);
     }
 
     .container{
@@ -98,14 +97,12 @@
     }
 
     .topbar-wrap{
-      position:sticky;
-      top:18px;
-      z-index:40;
+      position:relative;
+      z-index:20;
       display:flex;
       justify-content:center;
-      padding-top:18px;
+      padding-top:34px;
       animation:fadeDown .7s ease both;
-      transition:transform .25s ease, opacity .25s ease;
     }
 
     .topbar{
@@ -113,27 +110,15 @@
       align-items:center;
       justify-content:space-between;
       gap:18px;
-      width:min(100%, 680px);
-      min-height:56px;
+      width:min(100%, 760px);
+      min-height:58px;
       padding:8px 10px 8px 16px;
       border-radius:18px;
       background:var(--panel);
-      border:1px solid var(--panel-border);
+      border:1px solid var(--border);
       backdrop-filter:blur(16px);
       -webkit-backdrop-filter:blur(16px);
       box-shadow:0 10px 40px rgba(0,0,0,.24);
-      transition:
-        transform .25s ease,
-        background .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
-    }
-
-    .topbar-wrap.scrolled .topbar{
-      background:var(--panel-strong);
-      border-color:var(--panel-border-2);
-      box-shadow:0 18px 50px rgba(0,0,0,.30);
-      transform:translateY(2px) scale(.985);
     }
 
     .brand{
@@ -165,6 +150,8 @@
       display:flex;
       align-items:center;
       gap:22px;
+      flex-wrap:wrap;
+      justify-content:center;
     }
 
     .nav a,
@@ -180,6 +167,25 @@
     .nav button:hover,
     .nav a.active{
       color:#fff;
+    }
+
+    .nav a::after,
+    .nav button::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-5px;
+      width:0;
+      height:1px;
+      background:#fff;
+      transition:width .25s ease;
+      opacity:.9;
+    }
+
+    .nav a:hover::after,
+    .nav button:hover::after,
+    .nav a.active::after{
+      width:100%;
     }
 
     .contact-item{
@@ -211,10 +217,10 @@
       position:absolute;
       top:calc(100% + 12px);
       right:0;
-      min-width:210px;
+      min-width:230px;
       padding:8px;
       border-radius:14px;
-      background:rgba(13,17,26,.92);
+      background:rgba(13,17,26,.94);
       border:1px solid rgba(255,255,255,.07);
       backdrop-filter:blur(16px);
       -webkit-backdrop-filter:blur(16px);
@@ -236,7 +242,7 @@
       display:flex;
       flex-direction:column;
       gap:4px;
-      padding:12px 12px;
+      padding:12px;
       border-radius:10px;
       transition:.2s;
     }
@@ -259,18 +265,18 @@
     }
 
     .hero{
-      min-height:calc(100vh - 90px);
+      min-height:calc(100vh - 92px);
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:36px 0 80px;
+      padding:36px 0 90px;
       position:relative;
       z-index:2;
     }
 
     .hero-inner{
       width:100%;
-      max-width:760px;
+      max-width:800px;
       text-align:center;
       margin:0 auto;
     }
@@ -297,7 +303,7 @@
 
     h1{
       margin-top:20px;
-      font-size:clamp(56px, 7vw, 94px);
+      font-size:clamp(56px, 7vw, 96px);
       line-height:.92;
       font-weight:600;
       letter-spacing:-.085em;
@@ -306,7 +312,7 @@
     }
 
     .subtext{
-      max-width:640px;
+      max-width:670px;
       margin:26px auto 0;
       color:var(--muted);
       font-size:16px;
@@ -315,26 +321,37 @@
       animation:fadeUp .85s ease .24s both;
     }
 
+    .small-note{
+      max-width:700px;
+      margin:16px auto 0;
+      color:rgba(255,255,255,.42);
+      font-size:12px;
+      line-height:1.7;
+      animation:fadeUp .9s ease .3s both;
+    }
+
     .actions{
       display:flex;
       justify-content:center;
       align-items:center;
       gap:14px;
       flex-wrap:wrap;
-      margin-top:28px;
+      margin-top:30px;
       animation:fadeUp .9s ease .32s both;
     }
 
     .primary-btn,
     .secondary-solid-btn,
-    .bottom-btn{
+    .bottom-btn,
+    .mini-btn{
       position:relative;
       overflow:hidden;
     }
 
     .primary-btn::after,
     .secondary-solid-btn::after,
-    .bottom-btn::after{
+    .bottom-btn::after,
+    .mini-btn::after{
       content:"";
       position:absolute;
       inset:0;
@@ -345,7 +362,8 @@
 
     .primary-btn:hover::after,
     .secondary-solid-btn:hover::after,
-    .bottom-btn:hover::after{
+    .bottom-btn:hover::after,
+    .mini-btn:hover::after{
       transform:translateX(140%);
     }
 
@@ -372,8 +390,14 @@
 
     .primary-btn:hover,
     .secondary-solid-btn:hover,
-    .bottom-btn:hover{
-      transform:translateY(-2px);
+    .bottom-btn:hover,
+    .mini-btn:hover,
+    .dev-card:hover,
+    .stat-card:hover,
+    .download-row:hover,
+    .bottom-card:hover,
+    .info-card:hover{
+      transform:translateY(-6px);
     }
 
     .primary-btn:hover{
@@ -394,7 +418,8 @@
 
     .primary-btn svg,
     .secondary-solid-btn svg,
-    .bottom-btn svg{
+    .bottom-btn svg,
+    .mini-btn svg{
       width:16px;
       height:16px;
       stroke:#fff;
@@ -408,8 +433,32 @@
     .section{
       position:relative;
       z-index:2;
-      padding:0 0 70px;
-      background:linear-gradient(180deg, rgba(7,11,20,0) 0%, rgba(5,7,13,.72) 18%, rgba(5,7,13,1) 100%);
+      padding:0 0 78px;
+      background:linear-gradient(180deg, rgba(7,11,20,0) 0%, rgba(5,7,13,.72) 14%, rgba(5,7,13,1) 100%);
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:28px;
+    }
+
+    .section-title{
+      font-size:64px;
+      line-height:.95;
+      letter-spacing:-.06em;
+      font-weight:700;
+      color:#fff;
+    }
+
+    .section-desc{
+      max-width:420px;
+      font-size:14px;
+      line-height:1.7;
+      color:var(--muted2);
+      text-align:right;
     }
 
     .stats{
@@ -421,7 +470,9 @@
 
     .stat-card,
     .download-row,
-    .bottom-card{
+    .bottom-card,
+    .info-card,
+    .dev-card{
       transition:
         transform .28s var(--ease),
         border-color .25s ease,
@@ -439,7 +490,6 @@
     }
 
     .stat-card:hover{
-      transform:translateY(-6px);
       border-color:rgba(255,255,255,.08);
     }
 
@@ -459,17 +509,11 @@
       font-weight:500;
     }
 
-    .download-section{
-      padding-top:70px;
-    }
-
-    .section-title{
-      font-size:64px;
-      line-height:.95;
-      letter-spacing:-.06em;
-      font-weight:700;
-      color:#fff;
-      margin-bottom:34px;
+    .download-section,
+    .info-section,
+    .developers-section,
+    .sponsor-section{
+      padding-top:78px;
     }
 
     .download-list{
@@ -492,7 +536,6 @@
     }
 
     .download-row:hover{
-      transform:translateY(-6px);
       border-color:rgba(255,255,255,.08);
       background:linear-gradient(90deg, #121821, #131922);
     }
@@ -561,14 +604,18 @@
       flex-shrink:0;
     }
 
-    .bottom-grid{
+    .bottom-grid,
+    .info-grid,
+    .dev-grid{
       display:grid;
       grid-template-columns:repeat(2, 1fr);
       gap:20px;
       margin-top:34px;
     }
 
-    .bottom-card{
+    .bottom-card,
+    .info-card,
+    .dev-card{
       display:flex;
       flex-direction:column;
       justify-content:space-between;
@@ -580,31 +627,37 @@
       box-shadow:var(--shadow);
     }
 
-    .bottom-card:hover{
-      transform:translateY(-6px);
+    .bottom-card:hover,
+    .info-card:hover,
+    .dev-card:hover{
       border-color:rgba(255,255,255,.09);
     }
 
-    .bottom-top{
+    .bottom-top,
+    .info-top{
       display:flex;
       align-items:center;
       gap:14px;
     }
 
-    .bottom-icon{
+    .bottom-icon,
+    .info-icon{
       width:42px;
       height:42px;
       flex-shrink:0;
     }
 
-    .bottom-title{
+    .bottom-title,
+    .info-title{
       font-size:28px;
       font-weight:700;
       letter-spacing:-.05em;
       color:#fff;
     }
 
-    .bottom-text{
+    .bottom-text,
+    .info-text,
+    .dev-text{
       margin-top:18px;
       font-size:16px;
       line-height:1.7;
@@ -612,7 +665,8 @@
       max-width:420px;
     }
 
-    .bottom-btn{
+    .bottom-btn,
+    .mini-btn{
       margin-top:28px;
       width:max-content;
       display:inline-flex;
@@ -631,17 +685,121 @@
       transition:.2s ease;
     }
 
-    .bottom-btn:hover{
+    .bottom-btn:hover,
+    .mini-btn:hover{
       background:rgba(255,255,255,.12);
+    }
+
+    .mini-btn{
+      min-width:unset;
+      height:46px;
+      font-size:14px;
+      margin-top:22px;
+    }
+
+    .info-card .mini-btn{
+      margin-top:26px;
+    }
+
+    .dev-role{
+      font-size:13px;
+      color:#8ba0ff;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:700;
+    }
+
+    .dev-name{
+      margin-top:12px;
+      font-size:34px;
+      line-height:1;
+      letter-spacing:-.06em;
+      font-weight:700;
+      color:#fff;
+    }
+
+    .dev-text{
+      max-width:unset;
+    }
+
+    .sponsor-wrap{
+      margin-top:30px;
+      overflow:hidden;
+      border-top:1px solid rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      padding:26px 0;
+      position:relative;
+    }
+
+    .sponsor-track{
+      display:flex;
+      width:max-content;
+      gap:46px;
+      animation:marquee 24s linear infinite;
+      will-change:transform;
+    }
+
+    .sponsor-item{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      white-space:nowrap;
+      font-size:clamp(34px,4vw,62px);
+      line-height:1;
+      letter-spacing:-.06em;
+      font-weight:700;
+      color:rgba(255,255,255,.95);
+    }
+
+    .sponsor-dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#7f96ff;
+      box-shadow:0 0 20px rgba(127,150,255,.7);
+      flex-shrink:0;
+    }
+
+    .sponsor-small{
+      font-size:14px;
+      color:rgba(255,255,255,.4);
+      line-height:1.7;
+      margin-top:18px;
     }
 
     .footer-note{
       position:relative;
       z-index:2;
-      padding:0 24px 22px;
+      padding:0 24px 24px;
       color:rgba(255,255,255,.36);
       font-size:12px;
       font-weight:400;
+    }
+
+    .footer-bottom{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.06);
+      padding-top:18px;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      color:rgba(255,255,255,.42);
+    }
+
+    .footer-links a:hover{
+      color:#fff;
+    }
+
+    .draw-in{
+      clip-path:inset(0 100% 0 0);
+      animation:drawIn 1.1s var(--ease) forwards;
     }
 
     .reveal{
@@ -720,17 +878,34 @@
       }
     }
 
-    @media (max-width: 980px){
+    @keyframes marquee{
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
+    }
+
+    @keyframes drawIn{
+      from{clip-path:inset(0 100% 0 0)}
+      to{clip-path:inset(0 0 0 0)}
+    }
+
+    @media (max-width: 1080px){
+      .section-head{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .section-desc{
+        text-align:left;
+      }
+
       .stats{
         grid-template-columns:1fr;
       }
 
-      .bottom-grid{
+      .bottom-grid,
+      .info-grid,
+      .dev-grid{
         grid-template-columns:1fr;
-      }
-
-      .section-title{
-        font-size:52px;
       }
     }
 
@@ -747,7 +922,6 @@
 
       .topbar-wrap{
         padding-top:16px;
-        top:10px;
       }
 
       .topbar{
@@ -829,9 +1003,19 @@
         font-size:14px;
       }
 
-      .bottom-card{
+      .bottom-card,
+      .info-card,
+      .dev-card{
         padding:22px;
         min-height:220px;
+      }
+
+      .dev-name{
+        font-size:28px;
+      }
+
+      .sponsor-item{
+        font-size:36px;
       }
     }
   </style>
@@ -856,6 +1040,7 @@
             <a href="#" class="active">Home</a>
             <a href="#stats">Stats</a>
             <a href="#download">Download</a>
+            <a href="#developers">Developers</a>
 
             <div class="contact-item" id="contactItem">
               <button class="contact-btn" id="contactBtn" type="button">
@@ -885,14 +1070,18 @@
         <div class="hero-inner reveal">
           <div class="eyebrow">Fast and clean Minecraft launcher</div>
 
-          <h1>
+          <h1 class="draw-in">
             Minecraft, but<br>
             streamlined.
           </h1>
 
           <p class="subtext">
             Valera Launcher is a clean and modern Minecraft launcher for macOS and Windows,
-            created by Khreshyatikov for a smooth, minimal and focused experience.
+            created for a smooth, minimal and focused experience.
+          </p>
+
+          <p class="small-note">
+            Original title: Legacy Launcher. This site was made for people whose Legacy Launcher website does not open properly.
           </p>
 
           <div class="actions">
@@ -924,6 +1113,13 @@
 
     <section class="section" id="stats">
       <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title">Stats</h2>
+          <p class="section-desc">
+            A clean launcher experience with a modern product page, smooth reveal animations and a darker cinematic presentation.
+          </p>
+        </div>
+
         <div class="stats">
           <div class="stat-card reveal reveal-delay-1">
             <div class="stat-number">253k</div>
@@ -942,7 +1138,12 @@
         </div>
 
         <div class="download-section" id="download">
-          <h2 class="section-title reveal">Download</h2>
+          <div class="section-head reveal">
+            <h2 class="section-title">Download</h2>
+            <p class="section-desc">
+              Pick the right build for your platform. Simple installation, direct links and a cleaner way to launch.
+            </p>
+          </div>
 
           <div class="download-list">
             <a
@@ -957,7 +1158,7 @@
                 <div class="download-info">
                   <div class="download-top">
                     <div class="download-name">Windows</div>
-                    <div class="download-badge">for you</div>
+                    <div class="download-badge">recommended</div>
                   </div>
                   <div class="download-desc">
                     Stable desktop version for Windows systems.
@@ -1043,18 +1244,154 @@
             </div>
           </div>
         </div>
+
+        <div class="info-section">
+          <div class="section-head reveal">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-desc">
+              Extra links and related projects placed right inside the page instead of hiding them somewhere boring.
+            </p>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-card reveal-left reveal-delay-1">
+              <div>
+                <div class="info-top">
+                  <svg class="info-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zm-8 7v8l8 5v-8L4 9zm16 0l-8 5v8l8-5V9z"/>
+                  </svg>
+                  <div class="info-title">SunShield 4</div>
+                </div>
+
+                <div class="info-text">
+                  Best Minecraft server by Kittycatarthur4. Official server website for the project and updates.
+                </div>
+              </div>
+
+              <a class="mini-btn" href="https://sunsl.vercel.app" target="_blank" rel="noopener noreferrer">
+                sunsl.vercel.app
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 17L17 7"></path>
+                  <path d="M9 7H17V15"></path>
+                </svg>
+              </a>
+            </div>
+
+            <div class="info-card reveal-right reveal-delay-2">
+              <div>
+                <div class="info-top">
+                  <svg class="info-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 5h18v14H3V5zm2 2v10h14V7H5zm3 2h2v6H8V9zm4 0h2v6h-2V9z"/>
+                  </svg>
+                  <div class="info-title">Legacy Launcher</div>
+                </div>
+
+                <div class="info-text">
+                  The original name is Legacy Launcher. This page exists as an alternative website for users who cannot open the original one.
+                </div>
+              </div>
+
+              <div class="mini-btn" style="pointer-events:none;">
+                Alternate access page
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 17L17 7"></path>
+                  <path d="M9 7H17V15"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="developers-section" id="developers">
+          <div class="section-head reveal">
+            <h2 class="section-title">Developers</h2>
+            <p class="section-desc">
+              Credits stay visible here and in the footer, so the page feels like a real project site with real people behind it.
+            </p>
+          </div>
+
+          <div class="dev-grid">
+            <div class="dev-card reveal reveal-delay-1">
+              <div>
+                <div class="dev-role">Designer · Site creator</div>
+                <div class="dev-name">kittycatarthut4</div>
+                <div class="dev-text">
+                  Responsible for the design direction, structure, presentation and full website creation.
+                </div>
+              </div>
+            </div>
+
+            <div class="dev-card reveal reveal-delay-2">
+              <div>
+                <div class="dev-role">Idea</div>
+                <div class="dev-name">djvalera</div>
+                <div class="dev-text">
+                  Provided the main idea behind the launcher concept and project presentation.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sponsor-section">
+          <div class="section-head reveal">
+            <h2 class="section-title">Sponsors</h2>
+            <p class="section-desc">
+              Large moving sponsor line at the bottom, like a proper showcase strip instead of a tiny forgotten note.
+            </p>
+          </div>
+
+          <div class="sponsor-wrap reveal">
+            <div class="sponsor-track">
+              <div class="sponsor-item">
+                <span class="sponsor-dot"></span>
+                grindasongers
+              </div>
+              <div class="sponsor-item">
+                <span class="sponsor-dot"></span>
+                kreshyatikov
+              </div>
+              <div class="sponsor-item">
+                <span class="sponsor-dot"></span>
+                khvaudio.vercel.app
+              </div>
+              <div class="sponsor-item">
+                <span class="sponsor-dot"></span>
+                grindasongers
+              </div>
+              <div class="sponsor-item">
+                <span class="sponsor-dot"></span>
+                kreshyatikov
+              </div>
+              <div class="sponsor-item">
+                <span class="sponsor-dot"></span>
+                khvaudio.vercel.app
+              </div>
+            </div>
+          </div>
+
+          <div class="sponsor-small reveal">
+            Sponsors and featured links are displayed here as a moving marquee for a more polished showcase feel.
+          </div>
+        </div>
       </div>
     </section>
 
     <div class="footer-note">
-      Created by Khreshyatikov
+      <div class="footer-bottom">
+        <div>Created by kittycatarthut4 · Idea by djvalera · Original title: Legacy Launcher</div>
+        <div class="footer-links">
+          <a href="#developers">Developers</a>
+          <a href="https://sunsl.vercel.app" target="_blank" rel="noopener noreferrer">SunShield 4</a>
+          <a href="https://khvaudio.vercel.app" target="_blank" rel="noopener noreferrer">grindasongers</a>
+        </div>
+      </div>
     </div>
   </div>
 
   <script>
     const contactItem = document.getElementById('contactItem');
     const contactBtn = document.getElementById('contactBtn');
-    const topbarWrap = document.querySelector('.topbar-wrap');
 
     contactBtn.addEventListener('click', function (e) {
       e.stopPropagation();
@@ -1080,28 +1417,6 @@
     });
 
     revealItems.forEach(item => observer.observe(item));
-
-    let lastScrollY = window.scrollY;
-
-    window.addEventListener('scroll', () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > 20) {
-        topbarWrap.classList.add('scrolled');
-      } else {
-        topbarWrap.classList.remove('scrolled');
-      }
-
-      if (currentScrollY > lastScrollY && currentScrollY > 120) {
-        topbarWrap.style.transform = 'translateY(-10px)';
-        topbarWrap.style.opacity = '.96';
-      } else {
-        topbarWrap.style.transform = 'translateY(0)';
-        topbarWrap.style.opacity = '1';
-      }
-
-      lastScrollY = currentScrollY;
-    });
   </script>
 </body>
 </html>
